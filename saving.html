@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Savings Tracker - KENPAY</title>
+<link rel="stylesheet" href="savings.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> <!-- Font Awesome for icons -->
+</head>
+<body>
+<header>
+    <div class="logo">
+        <h1>KENPAY</h1>
+    </div>
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#" onclick="showLoginForm()">Log In</a></li>
+            <li><a href="#" onclick="showSignupForm()">Sign Up</a></li>
+        </ul>
+    </nav>
+</header>
+<div class="container">
+    <h2>Savings Tracker</h2>
+    <div class="balance">
+        <h3>Your Current Balance:</h3>
+        <p id="balance">$0.00</p>
+    </div>
+    <div class="actions">
+        <label for="amount">Amount:</label>
+        <input type="number" id="amount" placeholder="Enter amount">
+        <label for="paymentMethod">Payment Method:</label>
+        <select id="paymentMethod">
+            <option value="credit_card">Credit Card</option>
+            <option value="bank_transfer">Bank Transfer</option>
+            <option value="paypal">PayPal</option>
+            <option value="mpesa">M-PESA (0798714754)</option>
+        </select>
+        <button onclick="authenticateAndDeposit()">Deposit</button>
+        <button onclick="withdraw()">Withdraw</button>
+    </div>
+    <div class="referral">
+        <h3>Refer a Friend</h3>
+        <p>Share your referral link:</p>
+        <input type="text" id="referralLink" readonly>
+        <button onclick="generateReferralLink()">Generate Link</button>
+    </div>
+</div>
+
+<!-- Login Form -->
+<div class="form-container" id="loginForm">
+    <form action="#">
+        <h2>Log In</h2>
+        <div class="input-container">
+            <i class="fa fa-user icon"></i>
+            <input type="text" placeholder="Username" name="username">
+        </div>
+        <div class="input-container">
+            <i class="fa fa-lock icon"></i>
+            <input type="password" placeholder="Password" name="password">
+        </div>
+        <button type="submit">Log In</button>
+        <span class="close" onclick="closeLoginForm()">&times;</span>
+    </form>
+</div>
+
+<!-- Signup Form -->
+<div class="form-container" id="signupForm">
+    <form action="#">
+        <h2>Sign Up</h2>
+        <div class="input-container">
+            <i class="fa fa-user icon"></i>
+            <input type="text" placeholder="Username" name="username">
+        </div>
+        <div class="input-container">
+            <i class="fa fa-envelope icon"></i>
+            <input type="email" placeholder="Email" name="email">
+        </div>
+        <div class="input-container">
+            <i class="fa fa-lock icon"></i>
+            <input type="password" placeholder="Password" name="password">
+        </div>
+        <button type="submit">Sign Up</button>
+        <span class="close" onclick="closeSignupForm()">&times;</span>
+    </form>
+</div>
+
+<!-- Profile and Settings Section -->
+<div class="profile-container" id="profileSection">
+    <h2>Profile</h2>
+    <div class="profile-info">
+        <img src="default-profile-pic.jpg" alt="Profile Picture" id="profilePic">
+        <button onclick="changeProfilePicture()">Change Picture</button>
+    </div>
+    <div class="settings">
+        <h3>Settings</h3>
+        <ul>
+            <li><a href="#">Profile Settings</a></li>
+            <li><a href="#">Profile Policy</a></li>
+            <li><button onclick="requestVerification()">Request Verification</button></li>
+        </ul>
+    </div>
+</div>
+
+<!-- Sidebar -->
+<div class="sidebar">
+    <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Profile</a></li>
+        <li><a href="#">Settings</a></li>
+        <li><a href="#" onclick="logout()">Log Out</a></li>
+    </ul>
+</div>
+
+<script src="savings.js"></script>
+</body>
+</html>

@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lucky Spin - KENPAY</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="spin.css">
+    <link rel="stylesheet" href="dashboardmain.css"> <!-- Assuming this is your main dashboard style -->
+    <style>
+        /* Additional styles specific to spin.html */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .cycle {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            margin-top: 20px;
+        }
+
+        .wheel {
+            width: 200px;
+            height: 200px;
+            border: 10px solid #333;
+            border-radius: 50%;
+            position: relative;
+            margin: 20px;
+            overflow: hidden;
+        }
+
+        .inner {
+            width: 120px;
+            height: 120px;
+            border: 10px solid #333;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            overflow: hidden;
+        }
+
+        .wheel span,
+        .inner span {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 1px;
+            height: 100%;
+            background: red;
+            transform-origin: bottom;
+        }
+
+        .wheel .number,
+        .inner .number {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+
+        .wheel .number b,
+        .inner .number b {
+            font-size: 24px;
+            font-weight: bold;
+            width: 30px;
+            height: 30px;
+            background: #333;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .spinbtn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            font-size: 16px;
+        }
+
+        .spinbtn:hover {
+            background-color: #45a049;
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            height: 100%;
+            width: 250px;
+            position: fixed;
+            top: 0;
+            left: -250px;
+            background-color: #111;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            overflow-y: auto;
+        }
+
+        .sidebar.active {
+            left: 0;
+        }
+
+        .sidebar ul {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+        }
+
+        .sidebar ul li {
+            padding: 15px 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+        }
+
+        .sidebar ul li a {
+            text-decoration: none;
+            color: #ccc;
+            display: block;
+            font-size: 18px;
+        }
+
+        .sidebar ul li:hover {
+            background-color: #333;
+        }
+
+        .sidebar-header {
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .sidebar-header img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+
+        .sidebar-header a {
+            text-decoration: none;
+            color: #ccc;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .sidebar .logout {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+        }
+
+        .sidebar .logout a {
+            color: #ccc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            text-decoration: none;
+        }
+
+        .sidebar .logout a i {
+            margin-right: 10px;
+        }
+
+        /* Responsive Navigation */
+        #check {
+            display: none;
+        }
+
+        .checkbtn {
+            font-size: 30px;
+            color: white;
+            float: right;
+            line-height: 50px;
+            margin-right: 40px;
+            cursor: pointer;
+            display: none;
+        }
+
+        .checkbtn:hover {
+            color: #4CAF50;
+        }
+
+        #check:checked ~ .sidebar {
+            left: 0;
+        }
+
+        #check:checked ~ .checkbtn {
+            display: none;
+        }
+
+        #check:checked ~ .checkbtn #cancel {
+            display: block;
+        }
+
+        .wheel,
+        .inner {
+            animation: spin 5s ease-in-out;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(3600deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <input type="checkbox" id="check">
+    <label for="check" class="checkbtn">
+        <i class="fa fa-bars" id="btn"></i>
+        <i class="fa fa-times" id="cancel"></i>
+    </label>
+
+    <div class="sidebar">
+        <header class="sidebar-header">
+            <a href="#">
+                <img src="KENYA.png" alt="KENYA Logo">
+                <span class="nav-item">KENCOIN</span>
+            </a>
+        </header>
+        <ul>
+            <li><a href="#"><i class="fa fa-home"></i><span class="nav-item">Home</span></a></li>
+            <li><a href="#"><i class="fa fa-user"></i><span class="nav-item">Profile</span></a></li>
+            <li><a href="#"><i class="fa fa-wallet"></i><span class="nav-item">Wallet</span></a></li>
+            <li><a href="#"><i class="fa fa-chart-bar"></i><span class="nav-item">Analytics</span></a></li>
+            <li><a href="#"><i class="fa fa-tasks"></i><span class="nav-item">Tasks</span></a></li>
+            <li><a href="#"><i class="fa fa-cog"></i><span class="nav-item">Settings</span></a></li>
+            <li><a href="#"><i class="fa fa-question-circle"></i><span class="nav-item">Question</span></a></li>
+            <li><a href="#" class="logout"><i class="fa fa-sign-out-alt"></i><span class="nav-item">LOGOUT</span></a></li>
+        </ul>
+    </div>
+
+    <h1>LUCKY SPIN</h1>
+    <div class="cycle">
+        <div class="spinbtn">SPIN</div>
+        <div class="wheel">
+            <span style="--i:0;"></span>
+            <span style="--i:1;"></span>
+            <span style="--i:2;"></span>
+            <span style="--i:3;"></span>
+            <span style="--i:4;"></span>
+            <div class="number">
+                <b style="--i:0;">5</b>
+                <b style="--i:1;">1</b>
+                <b style="--i:2;">4</b>
+                <b style="--i:3;">6</b>
+                <b style="--i:4;">2</b>
+                <b style="--i:5;">8</b>
+                <b style="--i:6;">7</b>
+                <b style="--i:7;">3</b>
+            </div>
+        </div>
+        <div class="wheel inner">
+            <span style="--i:0;"></span>
+            <span style="--i:1;"></span>
+            <span style="--i:2;"></span>
+            <span style="--i:3;"></span>
+            <span style="--i:4;"></span>
+            <div class="number">
+                <b style="--i:0;">5</b>
+                <b style="--i:1;">1</b>
+                <b style="--i:2;">4</b>
+                <b style="--i:3;">6</b>
+                <b style="--i:4;">2</b>
+                <b style="--i:5;">8</b>
+                <b style="--i:6;">7</b>
+                <b style="--i:7;">3</b>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let spinbtn = document.querySelector('.spinbtn');
+        let wheel = document.querySelector('.wheel');
+        let inner = document.querySelector('.inner');
+
+        spinbtn.addEventListener('click', () => {
+            let value1 = Math.ceil(Math.random() * -3600);
+            let value2 = Math.ceil(Math.random() * 3600);
+            wheel.style.transition = 'transform 5s ease-in-out';
+            wheel.style.transform = `rotate(${value1}deg)`;
+            inner.style.transition = 'transform 5s ease-in-out';
+            inner.style.transform = `rotate(${value2}deg)`;
+
+            setTimeout(() => {
+                wheel.style.transition = 'none';
+                inner.style.transition = 'none';
+            }, 5000);
+        });
+    </script>
+</body>
+</html>
