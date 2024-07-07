@@ -479,6 +479,7 @@ footer{
         cursor: pointer;
         font-size: 22px;
         font-weight: 600;
+        height: 120px;
         width: 200px;
         padding-top: 0;
     }
