@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KENPAY</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> <!-- Font Awesome for icons -->
+
 </head>
 <body>
     <input type="checkbox" id="check">
@@ -14,7 +16,7 @@
                     <i class="fa fa-times" id="cancel"></i>
                 </label>
 
-            <div class="sidebar">
+        <div class="sidebar">
                 
                 <header class="sidebar-header"><a href="#"><img src="KENYA.png" alt=""><span class="nav-item">KENCOIN</span></a></header>
                 <ul>
@@ -25,7 +27,7 @@
                     <li><a href="#"><i class="fa fa-tasks"></i><span class="nav-item">Tasks</span></a></li>
                     <li><a href="#"><i class="fa fa-cog"></i><span class="nav-item">Settings</span></a></li>
                     <li><a href="#"><i class="fa fa-question-circle"></i><span class="nav-item">Question</span></a></li>
-                    <li><a href="#" class="logout"><i class="fa fa-sign-out-alt"></i><span class="nav-item">LOGOUT</span></a></li>
+                    <li><a href="logout.php" class="logout"><i class="fa fa-sign-out-alt"></i><span class="nav-item">LOGOUT</span></a></li>
                 </ul>
         </div>
     <!-- Navigation Header -->
@@ -37,7 +39,6 @@
             <ul>
                 <li><a href="#">Home</a></li>
                 <li><a href="#">Contact</a></li>
-                <li><a href="#">About</a></li>
                 <li><a href="account.html">Account</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropbtn">Follow Us <i class="fa fa-caret-down"></i></a>
@@ -52,13 +53,15 @@
             </ul>
         </nav>
     </header>
+   
     <!-- Body Content -->
     <main>
         <div class="button-container">
             <button class="kencoin" onclick="location.href='kencoin.html'">Kencoin</button>
             <button class="spin" onclick="location.href='spin.html'"></button>
-            <button class="remotask" onclick="remotask()">Remotask</button>
+            <button class="remotask" onclick="location.href='remotask.html'">Remotask</button>
             <button class="referrals" onclick="referrals()">Referrals</button>
+            <button class="forex" onclick="location.href='forex.html'">Forex</button>
         </div>
     </main>
 
