@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Binary Trading Game</title>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+        body {
+            display: block;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding-left: 5px;
+            padding-top: 10px;
+            font-family: 'Roboto', sans-serif;
+            background: url(winbig.jpeg), no-repeat;
+            background-size: cover;
+        }
+        .fas{
+            color: #fff;
+        }
+        header {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #333;
+            color: #fff;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+        header h1 {
+            margin: 0;
+        }
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 10px;
+            display: flex;
+            gap: 20px;
+        }
+        nav ul li {
+            display: inline;
+        }
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        nav ul li a:hover {
+            color: #ff9f1c;
+        }
+        .user-account {
+            display: flex;
+            align-items: center;
+        }
+        .user-account .fa-user {
+            font-size: 24px;
+            margin-right: 10px;
+            color: #fff;
+        }
+        .balance {
+            font-weight: bold;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border-radius: 10px;
+            
+        }
+        .buttons-container {
+            display: grid;
+            grid-template-columns: repeat(3, 100px);
+            gap: 3px;
+            margin-bottom: 20px;
+           
+            border-radius: 10px;
+        }
+        .button {
+            width: 100px;
+            height: 100px;
+            font-size: 24px;
+            font-weight: bold;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #ccc;
+            border: 2px solid #333;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: transform 0.3s, background-color 0.3s, box-shadow 0.3s;
+        }
+        .button:hover {
+            background-color: #ddd;
+        }
+        .button.active {
+            transform: scale(1.2);
+            box-shadow: 0 0 20px #ff9f1c;
+        }
+        .button:nth-child(1) {
+            background-color: #f94144;
+        }
+        .button:nth-child(2) {
+            background-color: #f3722c;
+        }
+        .button:nth-child(3) {
+            background-color: #f8961e;
+        }
+        .button:nth-child(4) {
+            background-color: #f9844a;
+        }
+        .button:nth-child(5) {
+            background-color: #f9c74f;
+        }
+        .button:nth-child(6) {
+            background-color: #90be6d;
+        }
+        .button:nth-child(7) {
+            background-color: #43aa8b;
+        }
+        .button:nth-child(8) {
+            background-color: #577590;
+        }
+        .button:nth-child(9) {
+            background-color: #277da1;
+        }
+        .controls {
+            display: flex;
+            gap: 20px;
+        }
+        .controls button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .controls button:hover {
+            background-color: #555;
+        }
+        @media (max-width:500px){
+            header h1 {
+            font-size: 18px;
+        }
+        .button {
+            width: 80px;
+            height: 80px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .buttons-container {
+            gap: 1px;
+        }
+        nav ul li a {
+            color: #fff;
+            font-size: 18px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Binary Trading Game</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li class="user-account">
+                    <i class="fas fa-user"></i>
+                    <span class="balance">$ 0.0</span>
+                </li>
+                <li><a href="#history">Trading History</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        <div class="buttons-container">
+            <div class="button" id="btn1">1</div>
+            <div class="button" id="btn2">2</div>
+            <div class="button" id="btn3">3</div>
+            <div class="button" id="btn4">4</div>
+            <div class="button" id="btn5">5</div>
+            <div class="button" id="btn6">6</div>
+            <div class="button" id="btn7">7</div>
+            <div class="button" id="btn8">8</div>
+            <div class="button" id="btn9">9</div>
+        </div>
+        <div class="controls">
+            <button onclick="startGame('even')">Even</button>
+            <button onclick="startGame('odd')">Odd</button>
+        </div>
+    </div>
+
+    <audio id="backgroundMusic" loop>
+        <source src="latto_lottery_official_video_ft._lu_kala_mp3_48600.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script>
+        let currentActive = 1;
+        let isRunning = false;
+        let userChoice = '';
+        const music = document.getElementById('backgroundMusic');
+
+        function startGame(choice) {
+            if (isRunning) return;
+            isRunning = true;
+            userChoice = choice;
+
+            music.play();
+
+            const buttons = document.querySelectorAll('.button');
+            let iteration = 0;
+            let randomInterval = Math.floor(Math.random() * 10) + 10;
+            const interval = setInterval(() => {
+                buttons.forEach(btn => btn.classList.remove('active'));
+                buttons[currentActive - 1].classList.add('active');
+                currentActive = (currentActive % 9) + 1;
+                iteration++;
+
+                if (iteration > randomInterval) { // Random number of revolutions
+                    clearInterval(interval);
+                    isRunning = false;
+                    music.pause();
+                    music.currentTime = 0;
+                    const lastNumber = currentActive === 1 ? 9 : currentActive - 1;
+                    setTimeout(() => checkWinner(lastNumber), 200); // Delay to show final result
+                }
+            }, 200);
+        }
+
+        function checkWinner(lastNumber) {
+            const isEven = lastNumber % 2 === 0;
+            if ((isEven && userChoice === 'even') || (!isEven && userChoice === 'odd')) {
+                alert(`You won! The last number is ${lastNumber} which is ${isEven ? 'even' : 'odd'}.`);
+            } else {
+                alert(`You lost! The last number is ${lastNumber} which is ${isEven ? 'even' : 'odd'}.`);
+            }
+        }
+    </script>
+</body>
+</html>
