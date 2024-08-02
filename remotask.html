@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REMOTASK</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="remotask.css">
+    <link rel="stylesheet" href="dashboardmain.css">
+</head>
+
+<body>
+    <input type="checkbox" id="check">
+    <label for="check" class="checkbtn">
+        <i class="fa fa-bars" id="btn"></i>
+        <i class="fa fa-times" id="cancel"></i>
+    </label>
+
+    <div class="sidebar">
+        <header class="sidebar-header"><a href="#"><img src="KENYA.png" alt=""><span class="nav-item">REMOTASK</span></a></header>
+        <ul>
+            <li><a href="#"><i class="fa fa-home"></i><span class="nav-item">Home</span></a></li>
+            <li><a href="#"><i class="fa fa-user"></i><span class="nav-item">Profile</span></a></li>
+            <li><a href="#"><i class="fa fa-wallet"></i><span class="nav-item">Wallet</span></a></li>
+            <li><a href="#"><i class="fa fa-chart-bar"></i><span class="nav-item">Analytics</span></a></li>
+            <li><a href="#"><i class="fa fa-tasks"></i><span class="nav-item">Tasks</span></a></li>
+            <li><a href="#"><i class="fa fa-cog"></i><span class="nav-item">Settings</span></a></li>
+            <li><a href="#"><i class="fa fa-question-circle"></i><span class="nav-item">Question</span></a></li>
+            <li><a href="#" class="logout"><i class="fa fa-sign-out-alt"></i><span class="nav-item">LOGOUT</span></a></li>
+        </ul>
+    </div>
+
+    <div class="jobsdiv">
+        <div class="jobs">
+            <h1>DATA ENTRY JOBS</h1>
+            <h2>Starts at $8 - Ksh. 1100 per job</h2>
+            <p>This involves posting classified ads on the websites to increase traffic by grabbing the attention of the website visitors to click on the ads. Posting the free classified ads is quite easy, and you will be paid on the number of ads posted. Want to try it and see how it works? Then try applying for the data entry job on our website.</p>
+            <button onclick="openModal()">Apply Now</button>
+        </div>
+        <!-- Repeat for other job listings -->
+
+        <div class="jobs">
+            <h1>CONTENT WRITING JOBS</h1>
+            <h2>Starts at $20 - Ksh. 2600 per job</h2>
+            <p>Content writing jobs are highly demanded today. It is important because every organization needs the right content to build trust in potential customers that helps their business flourish in the long run.</p>
+            <button onclick="openModal()">Apply Now</button>
+        </div>
+        <div class="jobs">
+            <h1>ONLINE TYPING JOBS</h1>
+            <h2>Starts at $12 - Ksh. 1600 per job</h2>
+            <p>This generally involves the data entry or document typing jobs which needs a person to have a good typing speed with good internet connectivity and a Desktop. You just need to spare your free hours here and Start earning easily</p>
+            <button onclick="openModal()">Apply Now</button>
+        </div>
+        <div class="jobs">
+            <h1>TRANSLATION JOBS</h1>
+            <h2>Starts at $5 - Ksh. 650 per job</h2>
+            <p>Do you know more than one language? Do you have  a degree certification on the same, then you can choose one of the various translation jobs on our platform. if you are an experienced translator, you can set your base price and can get better chances gradually, thus earning more</p>
+            <button onclick="openModal()">Apply Now</button>
+        </div>
+        <div class="jobs">
+            <h1>SURVEY JOBS</h1>
+            <h2>Starts at $5 - Ksh. 650 per job</h2>
+            <p>It is a kind of market research where you gather the opinions of the target audience through the use of questionaires and forms. The data collected through these are further subjected to analysis for deriving conclusions.</p>
+            <button onclick="openModal()">Apply Now</button>
+        </div>
+        <div class="jobs">
+            <h1>TUTORING JOBS</h1>
+            <h2>Starts at $10 - Ksh. 1300 per job</h2>
+            <p>This job involves teaching various subjects to the students online which is quite common nowdays. You get a chance to earn while sharing your knowledge with the students.</p>
+            <button onclick="openModal()">Apply Now</button>
+        </div>
+        <div class="jobs">
+            <h1>VIDEO & ANIMATION JOBS</h1>
+            <h2>Start at $50 - Ksh. 6500 per job</h2>
+            <p>Multimedia artist have an amazing career scope. In the online job opportunities, they need to show professionalism, integrity and multitask to meet the deadlines provided by the client. It needs investing some time and effort for completing the job but helps you earn handsome amount.</p>
+            <button onclick="openModal()">Apply Now</button>
+        </div>
+        <!-- Add more job sections similarly -->
+    </div>
+
+  
+
+    <!-- The Modal -->
+    <div id="applyModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Apply for Job</h2>
+            <form>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required><br><br>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required><br><br>
+                <label for="resume">Upload Resume:</label>
+                <input type="file" id="resume" name="resume" required><br><br>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+    <div class="footer">
+        <p>&copy; 2024 REMOTASK. All Rights Reserved.</p>
+    </div>
+
+    <script>
+        function openModal() {
+            document.getElementById("applyModal").style.display = "block";
+        }
+
+        function closeModal() {
+            document.getElementById("applyModal").style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == document.getElementById("applyModal")) {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+
+</html>

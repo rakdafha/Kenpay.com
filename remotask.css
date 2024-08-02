@@ -1,0 +1,122 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 10px;
+}
+
+
+
+
+
+input[type="text"] {
+    width: 200PX;
+    padding: 8px;
+    margin: 8px 0;
+    border: 1px solid #0f2adb;
+    border-radius: 5px;
+    text-align: center;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+
+
+.jobsdiv {
+    padding: 20px;
+    transition: margin-left 0.3s;
+}
+
+.jobs {
+    background: #10efd5;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 8px;
+}
+
+.jobs h1, .jobs h2 {
+    margin: 0;
+    padding: 0;
+}
+
+.jobs p {
+    margin: 10px 0 0;
+}
+
+.footer {
+    background: #111;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    display: block;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+    padding-top: 60px;
+    border-radius: 20px;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    border-radius: 20px;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+@media (max-width: 500px) {
+    input[type="text"] {
+        width: 50%;
+        padding: 8px;
+        margin: 8px 0;
+        border: 1px solid #0f2adb;
+        border-radius: 5px;
+        text-align: center;
+    }
+
+    .jobsdiv {
+        margin-left: 0;
+    }
+
+}
